@@ -7,5 +7,5 @@
   "documentation": "https://github.com/Cagiva-Raptor/ha-gitea-installer",
   "iot_class": "cloud_polling",
   "requirements": [],
-  "version": "2026.9.16.1"
+  "version": "2026.9.16.2"
 }
