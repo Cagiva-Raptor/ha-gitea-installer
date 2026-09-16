@@ -9,7 +9,8 @@
           "owner": "Owner / user",
           "repo": "Repository",
           "branch": "Branch",
-          "token": "Access token (optional)"
+          "token": "Access token (optional)",
+          "update_interval_hours": "Check interval for new version (hours)"
         }
       }
     },
@@ -30,7 +31,8 @@
           "owner": "Owner / user",
           "repo": "Repository",
           "branch": "Branch",
-          "token": "Access token (optional)"
+          "token": "Access token (optional)",
+          "update_interval_hours": "Check interval for new version (hours)"
         }
       }
     }

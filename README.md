@@ -97,6 +97,38 @@ opties-flow bewerkbaar via de configuratie-opties van de integratie).
    Is de doel-integratie nog nooit geconfigureerd, dan is eenmalig een
    herstart nodig.
 
+### Hoe updates gedetecteerd worden (belangrijk)
+
+- De update-entiteit vergelijkt het **`version`-veld in `manifest.json`** van
+  de remote repo met de lokaal geïnstalleerde versie.
+- **Bump dus telkens de `version` in `manifest.json`** wanneer je de code
+  wijzigt (bv. `2026.9.16.1` → `2026.9.16.2`). Zonder versie-bump wordt een
+  wijziging niet als update gezien.
+- Het **checkinterval** staat per installatie in de integratie-opties
+  (standaard elke 6 uur; 1–168 uur mogelijk).
+- Er is géén pushmelding naar de gebruiker — hij ziet "update beschikbaar" op
+  de update-entiteit, of drukt op "Nu bijwerken".
+
+### Voorbeeld: notificatie bij beschikbare update
+
+Om de gebruiker wél actief te waarschuwen (via de HA-UI aangemaakt):
+
+```yaml
+alias: Gitea Installer update beschikbaar
+trigger:
+  - platform: state
+    entity_id: update.gitea_installer_admin_ha_telenet_update
+    to: "on"
+action:
+  - service: notify.mobile_app_telefoon   # of notify.persoonlijke_notificaties
+    data:
+      title: "Telenet-integratie update"
+      message: "Er is een nieuwe versie beschikbaar — druk op 'Nu bijwerken'."
+mode: single
+```
+
+*(Entity-id en notify-service aanpassen naar de installatie van de gebruiker.)*
+
 ---
 
 ## Config Editor Panel (meegemonteerd in het hostscript)

@@ -16,7 +16,9 @@ from .const import (
     CONF_OWNER,
     CONF_REPO,
     CONF_TOKEN,
+    CONF_UPDATE_INTERVAL_HOURS,
     DEFAULT_BRANCH,
+    DEFAULT_UPDATE_INTERVAL_HOURS,
     DOMAIN,
 )
 from .installer import InstallError, fetch_remote_manifest
@@ -47,6 +49,20 @@ def _schema(data: dict | None = None) -> vol.Schema:
             ): selector.TextSelector(
                 selector.TextSelectorConfig(
                     type=selector.TextSelectorType.PASSWORD, autocomplete="off"
+                )
+            ),
+            vol.Optional(
+                CONF_UPDATE_INTERVAL_HOURS,
+                default=data.get(
+                    CONF_UPDATE_INTERVAL_HOURS, DEFAULT_UPDATE_INTERVAL_HOURS
+                ),
+            ): selector.NumberSelector(
+                selector.NumberSelectorConfig(
+                    type=selector.NumberSelectorType.INTEGER,
+                    min=1,
+                    max=168,
+                    mode=selector.NumberSelectorMode.BOX,
+                    unit_of_measurement="h",
                 )
             ),
         }

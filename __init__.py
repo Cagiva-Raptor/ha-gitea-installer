@@ -21,6 +21,7 @@ from .const import (
     CONF_OWNER,
     CONF_REPO,
     CONF_TOKEN,
+    CONF_UPDATE_INTERVAL_HOURS,
     DEFAULT_BRANCH,
     DEFAULT_UPDATE_INTERVAL_HOURS,
     DOMAIN,
@@ -62,11 +63,15 @@ class GiteaInstallerCoordinator(DataUpdateCoordinator):
     """Coördineert remote-versiecheck en installatie."""
 
     def __init__(self, hass: HomeAssistant, entry: ConfigEntry) -> None:
+        hours = int(
+            entry.data.get(CONF_UPDATE_INTERVAL_HOURS)
+            or DEFAULT_UPDATE_INTERVAL_HOURS
+        )
         super().__init__(
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(hours=DEFAULT_UPDATE_INTERVAL_HOURS),
+            update_interval=timedelta(hours=hours) if hours > 0 else None,
         )
         self.entry = entry
         self.config = dict(entry.data)

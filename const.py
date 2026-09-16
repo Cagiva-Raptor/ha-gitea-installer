@@ -8,6 +8,7 @@ CONF_OWNER = "owner"
 CONF_REPO = "repo"
 CONF_BRANCH = "branch"
 CONF_TOKEN = "token"
+CONF_UPDATE_INTERVAL_HOURS = "update_interval_hours"
 
 DEFAULT_BRANCH = "main"
 DEFAULT_UPDATE_INTERVAL_HOURS = 6

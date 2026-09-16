@@ -9,7 +9,8 @@
           "owner": "Eigenaar / gebruiker",
           "repo": "Repository",
           "branch": "Branch",
-          "token": "Access token (optioneel)"
+          "token": "Access token (optioneel)",
+          "update_interval_hours": "Checkinterval op nieuwe versie (uren)"
         }
       }
     },
@@ -30,7 +31,8 @@
           "owner": "Eigenaar / gebruiker",
           "repo": "Repository",
           "branch": "Branch",
-          "token": "Access token (optioneel)"
+          "token": "Access token (optioneel)",
+          "update_interval_hours": "Checkinterval op nieuwe versie (uren)"
         }
       }
     }
