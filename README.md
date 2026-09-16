@@ -48,7 +48,11 @@ bash install_bootstrap.sh /pad/naar/deze-map
 
 - detecteert automatisch de HA-container (of `HA_CONTAINER=<naam> bash
   install_bootstrap.sh`),
-- plaatst de integratie in `/config/custom_components/gitea_installer`,
+- installeert in één keer **twee** integraties:
+  1. **Gitea Installer** (`gitea_installer`),
+  2. **Config Editor Panel** (`config_editor`, van
+     [MataCrate/config-editor-panel](https://github.com/MataCrate/config-editor-panel))
+     — een admin-only YAML-editor in de HA-zijbalk (zie hieronder),
 - vraagt of hij de container mag herstarten.
 
 ### Optie B — via HACS (publieke repo)
@@ -92,6 +96,32 @@ opties-flow bewerkbaar via de configuratie-opties van de integratie).
 4. De config-entry van de doel-integratie **herladen** (geen herstart nodig).
    Is de doel-integratie nog nooit geconfigureerd, dan is eenmalig een
    herstart nodig.
+
+---
+
+## Config Editor Panel (meegemonteerd in het hostscript)
+
+HA **Container** heeft geen bestandseditor in de web-UI. Het hostscript
+installeert daarom ook **Config Editor Panel** (`config_editor`, MIT, van
+[MataCrate/config-editor-panel](https://github.com/MataCrate/config-editor-panel)),
+een admin-only sidebarpaneel dat YAML-bestanden onder `/config` kan
+bekijken en bewerken (incl. `configuration.yaml`):
+
+- YAML-editing met syntaxvalidatie, `!include`-bestanden aanmaken,
+  hernoemen/verwijderen,
+- config-check (`check_config`), YAML-reload en HA-restart vanuit het paneel,
+- automatische back-ups per bestand (herstellen zonder SSH),
+- bewust **geen** terminal/shell/chmod: enkel beveiligde bestandsbewerking
+  binnen `/config`.
+
+Installatie: na het hostscript → **Integratie toevoegen → Config Editor
+Panel** → de opties bevestigen → het item **Configuratie** verschijnt in de
+zijbalk voor admins.
+
+> Standaard mogen alleen YAML-bestanden bewerkt worden en blijft
+> `secrets.yaml` beschermd. Zie de opties van de integratie als je meer
+> bestandstypes of `secrets.yaml` wil toestaan — en lees dan goed de
+> veiligheidsnota van dat project.
 
 ---
 
