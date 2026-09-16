@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Gitea Installer — bron instellen",
+        "description": "Vul de gegevens van je Gitea-repo in. Het access token is enkel nodig als de repo privé is.",
+        "data": {
+          "gitea_url": "Gitea-basis-URL (bv. http://192.168.4.10:32769)",
+          "owner": "Eigenaar / gebruiker",
+          "repo": "Repository",
+          "branch": "Branch",
+          "token": "Access token (optioneel)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken, of het token is ongeldig.",
+      "invalid_archive": "De repo bevat geen geldige HA-integratie (geen manifest.json gevonden)."
+    },
+    "abort": {
+      "already_configured": "Deze repo is al geconfigureerd."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Gitea Installer — bron bewerken",
+        "data": {
+          "gitea_url": "Gitea-basis-URL",
+          "owner": "Eigenaar / gebruiker",
+          "repo": "Repository",
+          "branch": "Branch",
+          "token": "Access token (optioneel)"
+        }
+      }
+    }
+  }
+}

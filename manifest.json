@@ -1,0 +1,11 @@
+{
+  "domain": "gitea_installer",
+  "name": "Gitea Installer",
+  "codeowners": ["@Cagiva-Raptor"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/Cagiva-Raptor/ha-gitea-installer",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "2026.9.16.1"
+}

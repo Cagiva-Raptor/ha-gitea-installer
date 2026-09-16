@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Gitea Installer — configure source",
+        "description": "Enter your Gitea repository details. The access token is only needed if the repository is private.",
+        "data": {
+          "gitea_url": "Gitea base URL (e.g. http://192.168.4.10:32769)",
+          "owner": "Owner / user",
+          "repo": "Repository",
+          "branch": "Branch",
+          "token": "Access token (optional)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect, or the token is invalid.",
+      "invalid_archive": "The repository does not contain a valid HA integration (no manifest.json found)."
+    },
+    "abort": {
+      "already_configured": "This repository is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Gitea Installer — edit source",
+        "data": {
+          "gitea_url": "Gitea base URL",
+          "owner": "Owner / user",
+          "repo": "Repository",
+          "branch": "Branch",
+          "token": "Access token (optional)"
+        }
+      }
+    }
+  }
+}
